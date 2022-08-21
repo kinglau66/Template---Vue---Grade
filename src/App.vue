@@ -1,6 +1,10 @@
 <template>
   <h1 class="student mt-5">Students</h1>
   <GradeTracker />
+  <ErrorRetry
+    v-if="isError"
+    @retry="onClickRetry"
+  />
 </template>
 
 <script setup lang="ts">
