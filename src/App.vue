@@ -15,6 +15,7 @@
 <script setup lang="ts">
 import { onMounted, Ref, ref } from 'vue';
 import GradeTracker from './components/GradeTracker.vue';
+import ErrorRetry from './components/ErrorRetry.vue';
 import Grade from './model/grade.model'
 import wretch from 'wretch';
 import { retry } from "wretch/middlewares/retry"
@@ -68,7 +69,15 @@ const setup = async () => {
   students.value = [...studentmap.values()]
   console.log(studentmap)
 }
+
+const onClickRetry = () => {
+  init();
+  setup();
+}
+
 onMounted(setup);
+
+
 </script>
 
 <style>
