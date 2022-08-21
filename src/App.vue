@@ -1,10 +1,10 @@
 <template>
-  <h1 class="student mt-5">Students</h1>
-  <div v-if="!isError" class="students">
+  <h1 class="student mt-16">Students</h1>
+  <div v-if="!isError" class="students mt-16 lg:mx-96 md:mx-20 sm:mx-32">
     <p v-if="students?.length == 0 && !isError">
       Loading
     </p>
-    <div class="flex flex-wrap">
+    <div class="flex flex-wrap gap-4">
       <GradeTracker v-for="item in students" :key="item.student_id" :grade="item" />
     </div>
     <div v-if="students?.length == 0 && isError" />
