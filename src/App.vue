@@ -1,7 +1,7 @@
 <template>
   <h1 class="student mt-16">Students</h1>
   <div v-if="!isError" class="students mt-16 2xl:mx-96 md:mx-20 sm:mx-32 mx-5 tablet:mx-32 laptop:mx-20 desktop:mx-96">
-    <p class="loading">
+    <p class="loading" v-if="students?.length == 0 && !isError">
       Loading
     </p>
     <div class="flex flex-wrap gap-4">
