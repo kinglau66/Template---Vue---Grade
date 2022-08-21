@@ -4,14 +4,7 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'GradeTracker',
-  data() {
-    return {
-    }
-  }
-}
+<script setup lang="ts">
 </script>
 
 <style scoped>
