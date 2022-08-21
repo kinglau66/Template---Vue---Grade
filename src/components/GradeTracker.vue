@@ -1,6 +1,6 @@
 <template>
   <div id="grade_cont">
-    <p class="flex flex-col">
+    <div class="flex flex-col m-5 h-full">
       <small id="student_label">{{ grade?.name }}</small>
       <span
         id="student_id"
@@ -16,11 +16,13 @@
       <!-- <span id="gpa">
         {{ grade?.accMarks }}
       </span> -->
-      <span>GPA</span>
-      <span id="student_id">
-        {{ gpa }}
-      </span>
-    </p>
+      <div class="place-self-end mt-auto">
+        <span class="text-bottom">GPA</span>
+        <span id="student_id">
+          {{ gpa }}
+        </span>
+      </div>
+    </div>
   </div>
 </template>
 
