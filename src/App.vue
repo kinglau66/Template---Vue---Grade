@@ -1,10 +1,15 @@
 <template>
   <h1 class="student mt-5">Students</h1>
-  <GradeTracker />
-  <ErrorRetry
-    v-if="isError"
-    @retry="onClickRetry"
-  />
+  <div v-if="!isError" class="students">
+    <p v-if="students?.length == 0 && !isError">
+      Loading
+    </p>
+    <div class="flex flex-wrap">
+      <GradeTracker v-for="item in students" :key="item.student_id" :grade="item" />
+    </div>
+    <div v-if="students?.length == 0 && isError" />
+  </div>
+  <ErrorRetry v-if="isError" @retry="onClickRetry" />
 </template>
 
 <script setup lang="ts">
@@ -34,7 +39,7 @@ const init = () => {
 const setup = async () => {
   const url = `${API_URL}`;
   let fetchRes: any[] = await wretch(url)
-    .middlewares([retry({ retryOnNetworkError: true, maxAttempts: 2, until: (res)=> res?.clone().json().then(body =>body.length > 0) ?? false})])
+    .middlewares([retry({ retryOnNetworkError: true, maxAttempts: 2, until: (res) => res?.clone().json().then(body => body.length > 0) ?? false })])
     .addon(AbortAddon())
     .get()
     .setTimeout(3000)
