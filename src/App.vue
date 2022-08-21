@@ -1,6 +1,6 @@
 <template>
   <h1 class="student mt-16">Students</h1>
-  <div v-if="!isError" class="students mt-16 2xl:mx-96 md:mx-20 sm:mx-32 mx-5 tablet:mx-32 laptop:mx-20 desktop:mx-96">
+  <!-- <div v-if="!isError" class="students mt-16 2xl:mx-96 md:mx-20 sm:mx-32 mx-5 tablet:mx-32 laptop:mx-20 desktop:mx-96">
     <p class="loading" v-if="students?.length == 0 && !isError">
       Loading
     </p>
@@ -8,13 +8,14 @@
       <GradeTracker v-for="item in students" :key="item.student_id" :grade="item" />
     </div>
     <div v-if="students?.length == 0 && isError" />
-  </div>
-  <ErrorRetry v-if="isError" @retry="onClickRetry" />
+  </div> -->
+  <ErrorRetry @retry="onClickRetry" />
 </template>
 
 <script setup lang="ts">
 import { onMounted, Ref, ref } from 'vue';
 import GradeTracker from './components/GradeTracker.vue';
+import ErrorRetry from './components/ErrorRetry.vue';
 import Grade from './model/grade.model'
 import wretch from 'wretch';
 import { retry } from "wretch/middlewares/retry"
